@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="YUMMYCOSMOS — Discover 60 delicious luxury recipes with stunning photography, detailed ingredients, and step-by-step instructions. From breakfast to desserts.">
+  <title>YUMMYCOSMOS — Luxury Recipe Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">YUMMYCOSMOS</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#cta">Cookbook</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-content">
+      <p class="hero-label">✦ Premium Recipe Collection</p>
+      <h1 class="hero-title">Culinary <em>Artistry</em><br>Redefined</h1>
+      <p class="hero-subtitle">Discover 60 exquisite recipes crafted with passion. From sunrise breakfasts to moonlit
+        dinners — every dish tells a story.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number" data-target="60">0</span>
+          <span class="stat-label">Recipes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="6">0</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="300">0</span>
+          <span class="stat-label">Ingredients</span>
+        </div>
+      </div>
+      <a href="#recipes" class="hero-btn">Explore Recipes <span>→</span></a>
+    </div>
+  </section>
+
+  <!-- Categories Navigation -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Browse By</p>
+        <h2 class="section-title">Categories</h2>
+      </div>
+      <div class="category-filters" id="categoryFilters">
+        <button class="category-btn active" data-category="all">
+          <span class="cat-icon">🍽️</span>
+          <span class="cat-name">All Recipes</span>
+          <span class="cat-count" id="countAll">60</span>
+        </button>
+        <button class="category-btn" data-category="Breakfast">
+          <span class="cat-icon">🌅</span>
+          <span class="cat-name">Breakfast</span>
+          <span class="cat-count">10</span>
+        </button>
+        <button class="category-btn" data-category="Lunch">
+          <span class="cat-icon">☀️</span>
+          <span class="cat-name">Lunch</span>
+          <span class="cat-count">10</span>
+        </button>
+        <button class="category-btn" data-category="Dinner">
+          <span class="cat-icon">🌙</span>
+          <span class="cat-name">Dinner</span>
+          <span class="cat-count">10</span>
+        </button>
+        <button class="category-btn" data-category="Desserts">
+          <span class="cat-icon">🍰</span>
+          <span class="cat-name">Desserts</span>
+          <span class="cat-count">10</span>
+        </button>
+        <button class="category-btn" data-category="Appetizers">
+          <span class="cat-icon">🥂</span>
+          <span class="cat-name">Appetizers</span>
+          <span class="cat-count">10</span>
+        </button>
+        <button class="category-btn" data-category="Drinks">
+          <span class="cat-icon">🍹</span>
+          <span class="cat-name">Drinks</span>
+          <span class="cat-count">10</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recipes Grid -->
+  <section class="recipes-section" id="recipes">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Our Collection</p>
+        <h2 class="section-title">Handcrafted Recipes</h2>
+        <p class="section-subtitle">Each recipe is a masterpiece — carefully curated for the discerning palate</p>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search recipes..." autocomplete="off">
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="recipes-grid" id="recipesGrid">
+        <!-- Recipes loaded dynamically -->
+      </div>
+      <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading exquisite recipes...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recipe Modal -->
+  <div class="modal-overlay" id="recipeModal">
+    <div class="modal" id="modalContent">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-image-wrapper">
+        <img id="modalImage" src="" alt="">
+        <div class="modal-image-overlay">
+          <span class="modal-category" id="modalCategory"></span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-description" id="modalDescription"></p>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-nutrition" id="modalNutrition"></div>
+        <div class="modal-section">
+          <h3>🧾 Ingredients</h3>
+          <ul class="modal-ingredients" id="modalIngredients"></ul>
+        </div>
+        <div class="modal-section">
+          <h3>👨‍🍳 Instructions</h3>
+          <ol class="modal-instructions" id="modalInstructions"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="cta">
+    <div class="cta-bg"></div>
+    <div class="container">
+      <div class="cta-content">
+        <span class="cta-label">✦ Limited Edition</span>
+        <h2 class="cta-title">Get The Complete<br><em>Luxury Cookbook</em></h2>
+        <p class="cta-text">Download our beautifully designed cookbook featuring all 60 recipes with high-resolution
+          photos, detailed techniques, and exclusive chef's tips.</p>
+        <form class="cta-form" id="ctaForm">
+          <input type="email" id="ctaEmail" placeholder="Enter your email address" required>
+          <button type="submit" class="cta-btn">Get Free Cookbook</button>
+        </form>
+        <p class="cta-note">Join 12,000+ food lovers. No spam, just deliciousness.</p>
+        <div class="cta-features">
+          <div class="cta-feature">
+            <span>📖</span>
+            <p>60 Premium Recipes</p>
+          </div>
+          <div class="cta-feature">
+            <span>📸</span>
+            <p>HD Food Photography</p>
+          </div>
+          <div class="cta-feature">
+            <span>👨‍🍳</span>
+            <p>Chef's Secret Tips</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo"><span class="logo-icon">✦</span> YUMMYCOSMOS</a>
+          <p>Elevating home cooking to an art form. Every recipe is a journey, every meal a celebration.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#hero">Home</a>
+          <a href="#recipes">Recipes</a>
+          <a href="#categories">Categories</a>
+          <a href="#cta">Get Cookbook</a>
+        </div>
+        <div class="footer-links">
+          <h4>Categories</h4>
+          <a href="#" onclick="filterByCategory('Breakfast')">Breakfast</a>
+          <a href="#" onclick="filterByCategory('Lunch')">Lunch</a>
+          <a href="#" onclick="filterByCategory('Dinner')">Dinner</a>
+          <a href="#" onclick="filterByCategory('Desserts')">Desserts</a>
+        </div>
+        <div class="footer-links">
+          <h4>Follow Us</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">YouTube</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 YUMMYCOSMOS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="recipes-data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
